@@ -24,11 +24,8 @@ pipelines:
               timeout: 0
               artifacts:
                - build:
-                   source: bin/
+                   source: target/
                    destination: build
-               - test:
-                   source: tests/
-                   destination: test-reports/
               tasks:
                 - exec:
                     arguments:
@@ -41,7 +38,4 @@ pipelines:
                       - package
                     command: ./mvnw
                     run_if: passed
-          artifacts:
-            - source:
-                - '**/target/*.jar'
-              destination: 'all-artifacts'  
+
